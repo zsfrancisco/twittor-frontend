@@ -6,9 +6,11 @@ import "./SignInSignUp.scss"; import BasicModal from '../../components/Modal/Bas
 import LogoTwittor from "../../assets/img/png/logo.png";
 import LogoWhiteTwittor from "../../assets/img/png/logo-white.png";
 import SignUpForm from '../../components/SignUpForm';
-;
+import SignInForm from "../../components/SignInform";
 
-export default function SignInSignUp() {
+export default function SignInSignUp(props) {
+
+    const { setRefreshCheckLogin } = props;
 
     const [showModal, setShowModal] = useState(false);
     const [contentModal, setContentModal] = useState(null);
@@ -26,6 +28,7 @@ export default function SignInSignUp() {
                     <RightComponent
                         openModal={openModal}
                         setShowModal={setShowModal}
+                        setRefreshCheckLogin={setRefreshCheckLogin}
                     />
                 </Row>
             </Container>
@@ -62,7 +65,7 @@ function LeftComponent() {
 }
 
 function RightComponent(props) {
-    const { openModal, setShowModal } = props;
+    const { openModal, setShowModal, setRefreshCheckLogin } = props;
     return (
         <Col className="signin-signup__right" xs={6}>
             <div>
@@ -77,7 +80,7 @@ function RightComponent(props) {
                 </Button>
                 <Button
                     variant="outline-primary"
-                    onClick={() => openModal(<h2>Formulario de Login</h2>)}
+                    onClick={() => openModal(<SignInForm setShowModal={setShowModal} setRefreshCheckLogin={setRefreshCheckLogin} />)}
                 >
                     Iniciar sesión
                 </Button>
