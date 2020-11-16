@@ -37,7 +37,7 @@ export default function SignInForm(props) {
                         setRefreshCheckLogin(true);
                     }
                 }).catch(err => {
-                    console.log(err);
+                    // console.log(err);
                     toast.error("Error en el servidor, inténtelo más tarde");
                 }).finally(() => {
                     setSignInLoading(false);
